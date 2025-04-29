@@ -12,6 +12,55 @@ from huggingface_hub import HfFolder
 
 # --- アプリケーション設定 ---
 st.set_page_config(page_title="Gemma Chatbot", layout="wide")
+st.markdown(
+    """
+    <style>
+    .stApp {
+        background-color: #ffffff;
+    }
+
+    [data-testid="stSidebar"] {
+        background-color: #ffe4e9;
+    }
+
+    [data-testid="stSidebar"] .css-1d391kg, [data-testid="stSidebar"] .css-16huue1 {
+        color: #b23a48;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+        color: #b23a48; 
+    }
+
+    .stButton>button {
+        background-color: #f08080;
+        color: white;
+        border-radius: 10px;
+        padding: 10px 20px;
+        border: none;
+    }
+    .stButton>button:hover {
+        background-color: #e06666;
+        color: white;
+    }
+
+    label {
+        color: #b23a48;
+    }
+
+    .stTextArea textarea {
+    background-color: #fff0f5;
+    color: #b23a48;            
+    border: 1px solid #f8b6c1; 
+    border-radius: 10px;
+    padding: 10px;
+    font-size: 16px;
+    }
+
+    </style>
+    """,
+    unsafe_allow_html=True
+)
+
 
 # --- 初期化処理 ---
 # NLTKデータのダウンロード（初回起動時など）
@@ -46,7 +95,7 @@ def load_model():
 pipe = llm.load_model()
 
 # --- Streamlit アプリケーション ---
-st.title("🤖 Gemma 2 Chatbot with Feedback")
+st.markdown("<h2 style='text-align: center; font-size: 24px;'>🤖 Gemma 2 Chatbot with Feedback</h2>", unsafe_allow_html=True)
 st.write("Gemmaモデルを使用したチャットボットです。回答に対してフィードバックを行えます。")
 st.markdown("---")
 
@@ -78,4 +127,4 @@ elif st.session_state.page == "サンプルデータ管理":
 
 # --- フッターなど（任意） ---
 st.sidebar.markdown("---")
-st.sidebar.info("開発者: [Your Name]")
+st.sidebar.info("開発者: Saki Nakagawa")
